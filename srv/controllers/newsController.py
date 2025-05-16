@@ -8,7 +8,7 @@ def getPositiveNews() -> News:
         author="Marcin Najman",
         title="Marcin najman jednak nie zjadł pomarańczę",
         description="Marcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\n",
-        url="https:://google.com",
+        url="https://google.com",
         urlToImage="",
         publishedAt="2025-12-12 21:37",
         content="Marcin najman zjadł pomarańczę"

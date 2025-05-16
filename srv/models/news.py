@@ -7,4 +7,4 @@ class News(SQLModel, table=True):
     description: str | None = Field()
     url: str | None = Field()
     publishedAt: str | None = Field()
-    content: str | None = Field
+    content: str | None = Field()

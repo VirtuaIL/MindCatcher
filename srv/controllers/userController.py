@@ -1,5 +1,5 @@
 from sqlmodel import Session, select
-from main import app
+from ..main import app
 from fastapi import HTTPException
 from ..database import SessionDep
 from ..models.user import User

@@ -16,7 +16,6 @@ def read_user(journal_id: int, session: SessionDep):
 
 @app.post("/journals/", response_model=Journal, status_code=status.HTTP_201_CREATED)
 def create_user(journal: Journal, session: SessionDep) -> Journal:
-    print("XDD")
     session.add(journal)
     session.commit()
     session.refresh(journal)

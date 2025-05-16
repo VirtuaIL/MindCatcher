@@ -5,6 +5,7 @@ from .database import create_db_and_tables
 
 from .controllers import userController
 from .controllers import journalController
+from .controllers import newsController
 
 
 @app.on_event("startup")

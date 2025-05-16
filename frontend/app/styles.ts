@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
 
 
+let appWhite = '#fafffa';
+
 export const styles = StyleSheet.create({
-    // Twoje style
+
     container: {
         flex: 1,
         justifyContent: "center",
@@ -26,31 +28,48 @@ export const styles = StyleSheet.create({
     },
 
     // Style interfejsu streak/journal
+    appbarWrapper: {
+        width: '100%',
+        paddingHorizontal: 16,
+        paddingTop: 42,
+        alignItems: 'center',
+    },
     appbar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#D1B3FF',
         paddingHorizontal: 16,
-        paddingVertical: 12,
-        borderBottomWidth: 1,
-        borderColor: '#ccc',
+        paddingVertical: 10,
+        borderRadius: 20,
+        width: '100%',
+        maxWidth: 400,
     },
     appbarTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#333',
     },
+
     icon: {
         fontSize: 20,
     },
     streakCard: {
         backgroundColor: '#5F3DC4',
         margin: 16,
-        marginTop: 42,
+        marginTop: 14,
         padding: 16,
         borderRadius: 20,
         width: '90%',
+    },
+    newsCard: {
+        backgroundColor: appWhite,
+        margin: 16,
+        marginTop: 0,
+        padding: 16,
+        borderRadius: 20,
+        width: '90%',
+        textAlign: 'justify',
     },
     streakTitle: {
         color: 'white',
@@ -59,13 +78,26 @@ export const styles = StyleSheet.create({
         marginBottom: 6,
         // textAlign: 'center',
     },
+    newsTitle: {
+        color: 'black',
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginBottom: 16,
+        textAlign: 'center',
+    },
+    newsDescription: {
+        color: 'black',
+        fontSize: 16,
+        marginBottom: 16,
+        textAlign: 'justify',
+    },
     streakContent: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
     },
     circle: {
-        backgroundColor: 'white',
+        backgroundColor: appWhite,
         width: 100,
         height: 100,
         borderRadius: 50,

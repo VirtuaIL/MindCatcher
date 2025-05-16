@@ -1,31 +1,99 @@
-import { Text, View, TextInput } from "react-native";
-import { styles } from "./styles"; // Zaimportuj style
-import { MaterialCommunityIcons } from '@expo/vector-icons'; //
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import HomeScreen from './screens/HomeScreen';
+import JournalScreen from './screens/JournalScreen';
+import { DrawerParamList } from './types';
+import { TextStyle } from 'react-native';
 
-export default function Index() {
-  return (
-    <View style={styles.mainComponent}>
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
-        {/* STREAK */}
-        <View style={styles.streakCard}>
-            {/* Zmień alignItems na 'baseline' */}
-            <View style={{ flexDirection: 'row', alignItems: 'baseline', marginBottom: 10 }}>
-                <Text style={styles.streakTitle}>STREAK</Text>
-                <MaterialCommunityIcons name="fire" size={40} color="orange" style={{ marginLeft: 10 }} />
+function CustomDrawerContent(props: any) {
+    const currentRoute = props.state.routeNames[props.state.index];
+
+    const getLabelStyle = (routeName: string): TextStyle => ({
+        fontWeight: currentRoute === routeName ? 'bold' as 'bold' : 'normal' as 'normal',
+    });
+
+
+    return (
+        <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: 42 }}>
+            {/* Close button */}
+            <View style={{ paddingHorizontal: 16, marginBottom: 10, marginTop: 10 }}>
+                <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
+                    <MaterialCommunityIcons name="close" size={24} color="#3C1E88" />
+                </TouchableOpacity>
             </View>
-            <View style={styles.streakContent}>
-                <View style={styles.circle}>
-                    <Text style={styles.circleText}>100</Text>
-                </View>
-                <View style={styles.square}>
-                    <Text style={styles.squareText}>100</Text>
-                </View>
-            </View>
-        </View>
 
+            {/* DrawerItems z pogrubieniem aktywnej pozycji */}
+            <DrawerItem
+                label="Home"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'Home'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('Home')}
+                onPress={() => props.navigation.navigate('Home')}
+            />
+            <DrawerItem
+                label="Journal"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'Journal'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('Journal')}
+                onPress={() => props.navigation.navigate('Journal')}
+            />
+            <DrawerItem
+                label="History"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'History'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('History')}
+                onPress={() => {}}
+            />
+            <DrawerItem
+                label="Quest"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'Quest'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('Quest')}
+                onPress={() => {}}
+            />
+            <DrawerItem
+                label="Form"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'Form'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('Form')}
+                onPress={() => {}}
+            />
 
-    </View>
-  );
+        </DrawerContentScrollView>
+    );
 }
 
+export default function Index() {
+    return (
+        <Drawer.Navigator
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
+            screenOptions={{
+                headerShown: false,
+                drawerStyle: {width: 240},
 
+            }
+            }>
+            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Journal" component={JournalScreen} />
+        </Drawer.Navigator>
+    );
+}

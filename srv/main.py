@@ -1,9 +1,10 @@
 from typing import Union
 
-from app import app
-from database import create_db_and_tables
+from .app import app
+from .database import create_db_and_tables
 
-import controllers.userController
+from .controllers import userController
+from .controllers import journalController
 
 
 @app.on_event("startup")

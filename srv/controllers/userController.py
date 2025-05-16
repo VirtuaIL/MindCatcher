@@ -1,8 +1,8 @@
 
-from main import app 
+from ..main import app 
 from fastapi import HTTPException
-from database import SessionDep
-from models.user import User
+from ..database import SessionDep
+from ..models.user import User
 from fastapi import status
 
 

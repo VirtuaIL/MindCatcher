@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#333',
         marginLeft: 8,
-        marginTop: 2,
+        marginTop: -12,
     },
     footer: {
         flexDirection: 'row',

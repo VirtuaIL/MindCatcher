@@ -1,10 +1,10 @@
 from typing import Union
 
-from fastapi import FastAPI
-
+from app import app
 from database import create_db_and_tables
 
-app = FastAPI()
+import controllers.userController
+
 
 @app.on_event("startup")
 def on_startup():

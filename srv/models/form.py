@@ -12,6 +12,7 @@ class Form(SQLModel, table=True):
     mood_value: int = Field()
     sleep_value: int = Field()
     feelings: list["Feeling"] = Relationship(back_populates="form")
+    user: Optional["User"] = Relationship(back_populates="forms")
 
 class Feeling(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)

@@ -2,11 +2,11 @@ from sqlmodel import Session, select
 from ..main import app
 from fastapi import HTTPException
 from ..database import SessionDep
-from ..models.user import User
+from ..models.user import User, UserRead
 from fastapi import status
 
 
-@app.get("/users/{user_id}", response_model=User)
+@app.get("/users/{user_id}", response_model=UserRead)
 def read_user(user_id: int, session: SessionDep):
     user = session.get(User, user_id)
     if not user:

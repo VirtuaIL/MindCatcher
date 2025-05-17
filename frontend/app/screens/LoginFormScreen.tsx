@@ -90,7 +90,7 @@ export default function LoginFormScreen() {
                     showsVerticalScrollIndicator={false}
                 >
                     <View style={styles.loginCard}>
-                        
+
                         <Text style={styles.title}>Login now</Text>
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Username *</Text>

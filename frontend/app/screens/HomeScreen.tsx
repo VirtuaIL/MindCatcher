@@ -25,7 +25,7 @@ export default function HomeScreen({ navigation }: Props) {
 
             try {
 
-                const response = await fetch('http://10.254.68.47:8000/users/1');
+                const response = await fetch("http://10.254.68.47:8000/users/1");
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

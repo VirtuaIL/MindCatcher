@@ -8,7 +8,7 @@ from ..app import app
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    api_key="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"
     
 )
 
@@ -32,21 +32,15 @@ class distortionRequest(BaseModel):
 )
 def create_user(thought: distortionRequest, session: SessionDep):
 
-    # prompt = "is " + thought.thought + "distortion respond which types and why(shortly for every type) your response should look like\
-    # <type>\
-    # <reason>\
-    # or\
-    # <no>\
-    # <short response>\
-    # no indexing, no open message, no ending/summary" 
 
-    # print(prompt)
-
-    prompt = "is '" + thought.thought + "' coginitive distortion respond which types and why(shortly for every type) your response should look like '<type> <reason>' or '<no> < very SHORT response>' no indexing, no open message, no ending/summary"
+    # prompt = "is '" + thought.thought + "' a coginitive distortion? Respond which types and why(shortly for every type detected) your response should look like '<type> <reason>' or '<no> < very SHORT response>' no indexing, no open message, no ending/summary"
+    prompt = "Is the following thought a cognitive distortion? Reply in the format '<type> - <very short reason>' or 'no - <very short reason>'. Only one line. No intro, no summary. Thought: " + thought.thought
     completion = client.chat.completions.create(
         model="deepseek/deepseek-chat-v3-0324:free",
         store=True,
         messages=[{"role": "user", "content": prompt}],
     )
-    
+
+    # print(completion)
+    # return distortionResponse(response=prompt)
     return distortionResponse(response=completion.choices[0].message.content)

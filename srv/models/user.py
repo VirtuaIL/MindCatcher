@@ -2,6 +2,7 @@ from typing import List
 from pydantic import BaseModel
 from sqlmodel import Field, SQLModel, Relationship
 
+from .journal import Journal
 from .form import Form
 
 class User(SQLModel, table=True):
@@ -12,6 +13,7 @@ class User(SQLModel, table=True):
     streak_record:int = Field(default=0)
 
     forms: List["Form"] = Relationship(back_populates="user")
+    journals: List["Journal"] = Relationship(back_populates="user")
 
 class UserRead(BaseModel):
     id: int
@@ -21,3 +23,4 @@ class UserRead(BaseModel):
     streak_record:int
 
     forms: List["Form"] = []
+    journals: List["Journal"] = []

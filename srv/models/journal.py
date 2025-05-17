@@ -1,7 +1,6 @@
-from typing import List
+from typing import List, Optional
 from sqlmodel import JSON, Column, Field, SQLModel, Relationship
 from datetime import datetime
-from .user import User
 
 def getDateTime() -> datetime:
     return datetime.now()
@@ -14,3 +13,5 @@ class Journal(SQLModel, table=True):
         sa_column=Column(JSON),         # ← tell SQLAlchemy to use a JSON column
         default_factory=list,           # ← default to an empty list
     )
+
+    user: Optional["User"] = Relationship(back_populates="journals")

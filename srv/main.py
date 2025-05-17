@@ -8,6 +8,7 @@ from .controllers import journalController
 from .controllers import newsController
 from .controllers import formController
 from .controllers import loginController
+from .controllers import AIController
 
 
 @app.on_event("startup")

@@ -8,8 +8,8 @@ class User(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     username: str = Field(index=True)
     password: str = Field(index=True)
-    streak: int = Field()
-    streak_record:int = Field()
+    streak: int = Field(default=0)
+    streak_record:int = Field(default=0)
 
     forms: List["Form"] = Relationship(back_populates="user")
 

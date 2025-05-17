@@ -1,4 +1,8 @@
 
+from datetime import date,datetime
+from typing import List
+
+from sqlmodel import func, select
 from ..main import app 
 from fastapi import HTTPException
 from ..database import SessionDep
@@ -12,6 +16,15 @@ def read_user(journal_id: int, session: SessionDep):
     if not journal:
         raise HTTPException(status_code=404, detail="Journal not found")
     return journal
+
+@app.get("/journals/{user_id}/{date}", response_model=List[Journal])
+def read_journals(user_id: int, date: date, session: SessionDep):
+
+    statement = select(Journal).where(Journal.user_id == user_id).where(func.date(Journal.date) == date)
+    journals = session.exec(statement).all()
+    if not journals:
+        raise HTTPException(status_code=404, detail="No journals found for that date/or user")
+    return journals
 
 
 @app.post("/journals/", response_model=Journal, status_code=status.HTTP_201_CREATED)

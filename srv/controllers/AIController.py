@@ -41,10 +41,12 @@ def create_user(thought: distortionRequest, session: SessionDep):
     # no indexing, no open message, no ending/summary" 
 
     # print(prompt)
+
+    prompt = "is '" + thought.thought + "' coginitive distortion respond which types and why(shortly for every type) your response should look like '<type> <reason>' or '<no> < very SHORT response>' no indexing, no open message, no ending/summary"
     completion = client.chat.completions.create(
         model="deepseek/deepseek-chat-v3-0324:free",
         store=True,
-        messages=[{"role": "user", "content": thought.thought}],
+        messages=[{"role": "user", "content": prompt}],
     )
     
     return distortionResponse(response=completion.choices[0].message.content)

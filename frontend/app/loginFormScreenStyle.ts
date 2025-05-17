@@ -9,41 +9,6 @@ export const darkPurple = '#5F3DC4';
 export const darkPurple2 = '#3C1E88';
 
 export const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        backgroundColor: appWhite,
-    },
-    topBackgroundSection: {
-        height: height * 0.45,
-        width: '100%',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-    },
-    topGraphicPlaceholder: {
-        flex: 1,
-        backgroundColor: '#B2EBF2',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    placeholderTextForGraphic: {
-        color: '#00796B',
-        fontSize: 16,
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    baner: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-    },
-    bottomBackgroundSection: {
-        height: height * 0.55,
-        width: '100%',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-    },
     keyboardAvoidingContainer: {
         flex: 1,
         zIndex: 1,
@@ -88,10 +53,6 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 8,
         elevation: 15,
-    },
-    padlockIconPlaceholder: {
-        fontSize: 40,
-        color: '#F0FFF0',
     },
     padlockImage: {
         width: 110,

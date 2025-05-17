@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Slider } from '@react-native-assets/slider';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SLIDER_WIDTH = SCREEN_WIDTH * 0.8;
 
-export default function MoodSlider2() {
+export default function MoodSlider2({onChange}: {onChange: (value: number) => void}) {
     const [value, setValue] = useState<number>(50);
 
     // Funkcja do dynamicznego emoji
@@ -16,6 +16,11 @@ export default function MoodSlider2() {
         if (val < 80) return '😊';
         return '😁';
     };
+
+    useEffect(() => {
+        onChange(value);
+    }, [value]);
+
 
     // Pozycja emoji przyklejona do thumb + korekta do centrowania
     const emojiPosition = (value / 100) * SLIDER_WIDTH - 20;
@@ -36,9 +41,12 @@ export default function MoodSlider2() {
                     maximumValue={100}
                     step={1}
                     value={value}
-                    minimumTrackTintColor="#5F3DC4"
-                    maximumTrackTintColor="#E5D5FF"
-                    thumbTintColor="#5F3DC4"
+                    // minimumTrackTintColor="#5F3DC4"
+                    // maximumTrackTintColor="#E5D5FF"
+                    // thumbTintColor="#5F3DC4"
+                    minimumTrackTintColor="#E5D5FF"  // Jasny fiolet
+                    maximumTrackTintColor="#5F3DC4"  // Ciemny fiolet
+                    thumbTintColor="white"           // Biały thumb, ewentualnie transparent
                     onValueChange={(val: number) => setValue(val)}
                 />
             </View>
@@ -48,7 +56,8 @@ export default function MoodSlider2() {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
+        backgroundColor: '#5F3DC4',
         borderRadius: 20,
         padding: 20,
         margin: 16,
@@ -61,7 +70,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color: '#5F3DC4',
+        // color: '#5F3DC4',
+        color: 'white',
         fontWeight: 'bold',
         marginBottom: 36,
     },
@@ -70,6 +80,7 @@ const styles = StyleSheet.create({
         height: 60,
         position: 'relative',
         justifyContent: 'center',
+        color: 'white',
     },
     emoji: {
         position: 'absolute',

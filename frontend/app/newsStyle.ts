@@ -11,7 +11,7 @@ export const newsStyles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 15,
         marginHorizontal: 16, // Standardowy margines dla kart
-        marginTop: 16,        // Odstęp od góry
+        marginTop: 32,        // Odstęp od góry
         width: '90%',         // Szerokość karty
         alignSelf: 'center',  // Wycentrowanie karty, jeśli jest w kontenerze flex
     },

@@ -6,7 +6,6 @@ import {
     Platform,
     ScrollView,
     TouchableOpacity,
-    StyleSheet,
     Dimensions,
     Image,
 } from "react-native";
@@ -14,8 +13,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from "expo-checkbox";
 import type {DrawerScreenProps} from "@react-navigation/drawer";
 import {DrawerParamList} from "@/app/types";
-import React, { useState } from "react";
-import { styles, appWhite, lightPurple, lightPurple2, darkPurple, darkPurple2 } from '../loginFormScreenStyle';
+import React, {useEffect, useState } from "react";
+import { styles } from '../loginFormScreenStyle';
+import {LoginRequest} from "../model/login";
+import { useUser } from '../UserContext';
+import { useNavigation } from "expo-router";
 
 type Props = DrawerScreenProps<DrawerParamList, 'Login'>;
 const { height } = Dimensions.get('window');
@@ -25,21 +27,60 @@ export default function LoginFormScreen() {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleLogin = () => {
-        console.log('Próba logowania:', { username, password, rememberMe });
-    };
+
+    const { userId, setUserId } = useUser();
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        if (userId) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Home' }]
+            });
+        }
+    }, [userId]);
+
+
+    const handleLogin = async () => {
+            const loginRequest = new LoginRequest(username, password);
+
+
+
+            try {
+                const response = await fetch('http://10.254.68.47:8000/login/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(loginRequest),
+                });
+
+                console.log('Username:', username);
+                console.log('Password:', password);
+
+                if (!response.ok) {
+                    console.log('Błąd logowania');
+                    return;
+                }
+
+                const data = await response.json().then((response) => {
+                    setUserId(response.user_id);
+                    console.log('User ID globalny:', {response});
+                })
+                console.log('Zalogowano pomyślnie:', data);
+                console.log('User ID globalny:', {userId});
+            } catch (error) {
+                console.log('Błąd połączenia:', error);
+            }
+        };
 
     return (
-        <View style={styles.screen}>
-            <View style={styles.topBackgroundSection}>
-                <Image source={require('../../assets/images/baner.jpg')} style={styles.baner} />
-            </View>
-            <LinearGradient
-                colors={['#ecb2ff', '#FF8AF5', '#f427f8']}
-                style={styles.bottomBackgroundSection}
-                start={{ x: 0, y: 0.8 }}
-                end={{ x: 1, y: 0 }}
-            />
+        <LinearGradient
+            colors={['#21005d', '#d0bcff', '#4f378a']}
+            style={{ flex: 1 }}
+            start={{ x: 0, y: 0.8 }}
+            end={{ x: 1, y: 0 }}
+        >
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={styles.keyboardAvoidingContainer}
@@ -54,7 +95,7 @@ export default function LoginFormScreen() {
                                 <Image source={require('../../assets/images/login.png')} style={styles.padlockImage} />
                             </View>
                         </View>
-                        <Text style={styles.title}>Zaloguj się teraz</Text>
+                        <Text style={styles.title}>Login now</Text>
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Username *</Text>
                             <TextInput
@@ -88,19 +129,19 @@ export default function LoginFormScreen() {
                             <Text style={styles.rememberMeText}>Remember me</Text>
                         </View>
                         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                            <Text style={styles.loginButtonText}>ZALOGUJ SIĘ</Text>
+                            <Text style={styles.loginButtonText}>LOGIN</Text>
                         </TouchableOpacity>
                         <View style={styles.linksContainer}>
-                            <TouchableOpacity onPress={() => console.log('Nawiguj do Rejestracji')}>
-                                <Text style={styles.linkText}>Nie masz konta?</Text>
+                            <TouchableOpacity onPress={() => console.log('Navigate to Sign Up')}>
+                                <Text style={styles.linkText}>Don't have an account?</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => console.log('Nawiguj do Resetowania Hasła')}>
-                                <Text style={styles.linkText}>Zapomniałeś hasła?</Text>
+                            <TouchableOpacity onPress={() => console.log('Navigate to Forgot Password')}>
+                                <Text style={styles.linkText}>Forgot Password?</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-        </View>
+        </LinearGradient>
     );
 }

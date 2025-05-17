@@ -29,13 +29,14 @@ export const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: lightPurple,
+        paddingBottom: 16,
     },
 
     // Style interfejsu streak/journal
     appbarWrapper: {
         width: '100%',
         // paddingHorizontal: 16,
-        paddingTop: 42,
+        paddingTop: 62,
         alignItems: 'center',
     },
     appbar: {
@@ -63,10 +64,16 @@ export const styles = StyleSheet.create({
     streakCard: {
         backgroundColor: darkPurple,
         margin: 16,
-        marginTop: 14,
+        marginTop: 32,
         padding: 16,
+        paddingBottom: 32,
         borderRadius: 20,
         width: '90%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 3,
     },
     newsCard: {
         backgroundColor: appWhite,
@@ -76,12 +83,17 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         width: '90%',
         textAlign: 'justify',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 3,
     },
     streakTitle: {
         color: 'white',
         fontSize: 30,
         fontWeight: 'bold',
-        marginBottom: 6,
+        marginBottom: 20,
         // textAlign: 'center',
     },
     newsTitle: {
@@ -119,7 +131,7 @@ export const styles = StyleSheet.create({
     },
     circleText: {
         color: darkPurple,
-        fontSize: 24,
+        fontSize: 48,
         fontWeight: 'bold',
     },
     square: {
@@ -132,7 +144,7 @@ export const styles = StyleSheet.create({
     },
     squareText: {
         color: 'white',
-        fontSize: 24,
+        fontSize: 48,
         fontWeight: 'bold',
     },
     journalCard: {

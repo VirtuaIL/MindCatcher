@@ -8,6 +8,7 @@ import { DrawerParamList } from './types';
 import { TextStyle } from 'react-native';
 import FormScreen from "./screens/FormScreen";
 import LoginFormScreen from "./screens/LoginFormScreen";
+import CallendarScreen from "@/app/screens/CallendarScreen";
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -48,6 +49,16 @@ function CustomDrawerContent(props: any) {
                 inactiveTintColor="#3C1E88"
                 labelStyle={getLabelStyle('Journal')}
                 onPress={() => props.navigation.navigate('Journal')}
+            />
+            <DrawerItem
+                label="Calendar"
+                icon={() => <MaterialCommunityIcons name="star-outline" size={24} color="#3C1E88" />}
+                focused={currentRoute === 'Calendar'}
+                activeBackgroundColor="#E5D5FF"
+                activeTintColor="#5F3DC4"
+                inactiveTintColor="#3C1E88"
+                labelStyle={getLabelStyle('Calendar')}
+                onPress={() => props.navigation.navigate('Calendar')}
             />
             {/*<DrawerItem*/}
             {/*    label="History"*/}
@@ -108,6 +119,13 @@ export default function Index() {
             <Drawer.Screen name="Journal" component={JournalScreen} />
             <Drawer.Screen name="Form" component={FormScreen} />
             <Drawer.Screen name="Login" component={LoginFormScreen} />
+            <Drawer.Screen name="Calendar" component={CallendarScreen} />
+            {/*<Drawer.Screen name="History" component={HistoryScreen} />*/}
+            {/*<Drawer.Screen name="Quest" component={QuestScreen} />*/}
+
+            {/* Uncomment the following lines to add History and Quest screens */}
+            {/*<Drawer.Screen name="History" component={HistoryScreen} />*/}
+            {/*<Drawer.Screen name="Quest" component={QuestScreen} />*/}
             {/*<Drawer.Screen name="History" component={HistoryScreen} />*/}
             {/*<Drawer.Screen name="Quest" component={QuestScreen} />*/}
 

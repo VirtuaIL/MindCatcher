@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import { UserProvider } from './UserContext';
 import { Platform } from "react-native";
 import * as SystemUI from 'expo-system-ui';
 
@@ -13,11 +14,13 @@ export default function RootLayout() {
 
   return (
       <>
-        {/* Ustawia ikony paska stanu na jasne (białe), co jest odpowiednie dla ciemnego tła */}
-        <StatusBar style="light" />
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-        </Stack>
+        <UserProvider>
+            <StatusBar style="light" />
+            <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+            </Stack>
+        </UserProvider>
+
       </>
   );
 }

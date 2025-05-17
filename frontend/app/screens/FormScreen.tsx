@@ -10,16 +10,60 @@ import FeelingsSelector from "@/app/components/FeelingsSelector";
 import MoodSlider from "@/app/components/MoodSlider";
 import MoodSlider2 from "@/app/components/MoodSlider2";
 
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
+import { FormRequest } from '../model/FormRequest';
 
 type Props = DrawerScreenProps<DrawerParamList, 'Form'>;
 
-let feelings: {[key:string] : boolean} = {}
+let feelings: [{name: string, value: boolean}];
+let mood: number = 0;
+let sleep: number = 0;
 
 export default function FormScreen({ navigation }: Props) {
 
-    const handleFeelingsChange = (selectedFeelings: {[key:string] : boolean}) => {
-        feelings = selectedFeelings;
+    const handleSaveForm = async () => {
+        const formRequest = new FormRequest(1, mood, sleep, feelings);
+        console.log(formRequest);
+        try {
+            const response = await fetch("http://10.254.68.47:8000/forms/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formRequest),
+            });
+
+            if (!response.ok) {
+                console.log('Could not send form');
+                return;
+            }
+
+            const data = await response.json();
+            console.log('form sent: ', data);;
+        } catch (error) {
+            console.log('Connection error:', error);
+        }
+    };
+
+
+    const handleFeelingsChange = (selectedFeelings: { [key: string]: boolean }) => {
+        const feelingsArray = Object.keys(selectedFeelings).map((key) => ({
+            name: key,
+            value: selectedFeelings[key],
+        }));
+
+        feelings = feelingsArray;
+
+        console.log(feelings); // Optional: debug
+    };
+
+
+    const onMoodChange = (value: number) => {
+        mood = value;
+    }
+
+    const onSleepChange = (value: number) => {
+        sleep = value;
     }
 
     return (
@@ -28,14 +72,14 @@ export default function FormScreen({ navigation }: Props) {
             <ScrollView contentContainerStyle={{ padding: 16 }}>
                 {/*<MoodSlider label="Overall mood" icon="😃" />*/}
                 {/*<MoodSlider label={"Mood"}/>*/}
-                <MoodSlider/>
-                <MoodSlider2/>
+                <MoodSlider onChange={onMoodChange}/>
+                <MoodSlider2 onChange={onSleepChange}/>
                 <FeelingsSelector onSendData={handleFeelingsChange} />
 
                 {/*<TouchableOpacity style={localstyles.saveButton} onPress={() => onSave()}>*/}
                 {/*    <Text style={localstyles.saveButtonText}>Save</Text>*/}
                 {/*</TouchableOpacity>*/}
-                <TouchableOpacity style={localstyles.saveButton} onPress={() => onSave()}>
+                <TouchableOpacity style={localstyles.saveButton} onPress={() => handleSaveForm()}>
                     <Text style={localstyles.saveButtonText}>ADD</Text>
                 </TouchableOpacity>
 
@@ -47,19 +91,16 @@ export default function FormScreen({ navigation }: Props) {
     );
 }
 
-function onSave() {
-    console.log(feelings);
-}
-
 const localstyles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        marginTop: 32,
+        marginTop: 16,
         // textAlign: 'center',
         alignItems: 'center',
     },
     saveButton: {
+        paddingTop: 16,
         backgroundColor: '#5F3DC4',
         paddingVertical: 16,
         paddingHorizontal: 20,
@@ -67,6 +108,7 @@ const localstyles = StyleSheet.create({
         // marginRight: 8,
         width: '30%',
         alignSelf: 'center',
+        marginTop: 16,
     },
     saveButtonText: {
         color: '#fff',

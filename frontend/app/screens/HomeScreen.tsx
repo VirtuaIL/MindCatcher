@@ -15,8 +15,6 @@ export default function HomeScreen({ navigation }: Props) {
     const [data, setData] = useState<UserData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    let streak = 0;
-    let streakRecord = 0;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +30,7 @@ export default function HomeScreen({ navigation }: Props) {
 
 
                 const json = await response.json();
-
+                console.log(json)
                 const apiData: UserData = new UserData(json.id, json.username, json.password, json.streak, json.streak_record);
                 setData(apiData);
             } catch (e: any) {
@@ -51,8 +49,15 @@ export default function HomeScreen({ navigation }: Props) {
         };
     }, []);
 
+    // TU VARIABLE Z USERA SĄ NIE USUWAĆ TEGO PLS
     useEffect(() => {
-        console.log(data);
+        if(!data) return
+        if(data.streak === null){
+            data.streak = 0;
+        }
+        if(data.streak_record === null){
+            data.streak_record = 0;
+        }
     }, [data]);
 
     if (loading) {
@@ -79,7 +84,7 @@ export default function HomeScreen({ navigation }: Props) {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.mainComponent}>
                 <AppBar navigation={navigation} />
-                <StreakCard streak={streak} streakRecord={streakRecord} />
+                <StreakCard streak={data.streak} streakRecord={data.streak_record} />
                 <WellbeingTrackerCard />
                 <News />
 

@@ -3,4 +3,5 @@ export type DrawerParamList = {
     Journal: undefined;
     Form: undefined;
     Login: undefined;
+    Calendar: undefined;
 };

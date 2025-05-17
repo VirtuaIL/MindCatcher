@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Slider } from '@react-native-assets/slider';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SLIDER_WIDTH = SCREEN_WIDTH * 0.8;
 
-export default function MoodSlider() {
+export default function MoodSlider({onChange}: {onChange: (value: number) => void}) {
     const [value, setValue] = useState<number>(50);
 
     // Funkcja do dynamicznego emoji
@@ -16,6 +16,10 @@ export default function MoodSlider() {
         if (val < 80) return '😊';
         return '😎';
     };
+
+    useEffect(() => {
+        onChange(value);
+    }, [value]);
 
     // Pozycja emoji przyklejona do thumb + korekta do centrowania
     const emojiPosition = (value / 100) * SLIDER_WIDTH - 20;

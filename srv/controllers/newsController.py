@@ -6,9 +6,9 @@ from ..models.news import News
 def getPositiveNews() -> News:
     x = News(
         author="Marcin Najman",
-        title="Marcin najman jednak nie zjadł pomarańczę",
+        title="Marcin najman zjadł pomarańczę",
         description="Marcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\nMarcina najman wziął i zjadł pomarańczę\n",
-        url="https://google.com",
+        url="https://www.youtube.com/watch?v=-cYBOGo0ptk",
         urlToImage="",
         publishedAt="2025-12-12 21:37",
         content="Marcin najman zjadł pomarańczę"

@@ -7,6 +7,7 @@ from .controllers import userController
 from .controllers import journalController
 from .controllers import newsController
 from .controllers import formController
+from .controllers import loginController
 
 
 @app.on_event("startup")

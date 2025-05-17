@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from ..database import SessionDep
 from ..models.user import User, UserRead
 from fastapi import status
+from ..hashPassword import get_password_hash
 
 
 @app.get("/users/{user_id}", response_model=UserRead)
@@ -25,6 +26,7 @@ def create_user(user: User, session: SessionDep) -> User:
             detail="Username already registered",
         )
 
+    user.password = get_password_hash(user.password)
     session.add(user)
     session.commit()
     session.refresh(user)
@@ -50,6 +52,7 @@ def update_user(
         )
     
     user.id = user_id
+    user.password = get_password_hash(user.password)
     merged = session.merge(user)
     # 3) persist changes
     session.commit()

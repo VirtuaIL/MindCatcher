@@ -90,11 +90,7 @@ export default function LoginFormScreen() {
                     showsVerticalScrollIndicator={false}
                 >
                     <View style={styles.loginCard}>
-                        <View style={styles.iconOuterContainer}>
-                            <View style={styles.iconCircleBackground}>
-                                <Image source={require('../../assets/images/login.png')} style={styles.padlockImage} />
-                            </View>
-                        </View>
+
                         <Text style={styles.title}>Login now</Text>
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Username *</Text>

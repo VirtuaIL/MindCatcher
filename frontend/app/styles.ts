@@ -32,10 +32,10 @@ export const styles = StyleSheet.create({
         paddingBottom: 16,
     },
 
-    // Style interfejsu streak/journal
+
     appbarWrapper: {
         width: '100%',
-        // paddingHorizontal: 16,
+
         paddingTop: 62,
         alignItems: 'center',
     },
@@ -48,9 +48,7 @@ export const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 20,
         width: '90%',
-        // maxWidth: 400,
-        // marginLeft: 32,
-        // marginRight: 32,
+
     },
     appbarTitle: {
         fontSize: 18,
@@ -252,5 +250,12 @@ export const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 14,
+    },
+    keyboardAvoidingContainer: {
+        flex: 1,
+        backgroundColor: '#EADDFF',
+    },
+    scrollContentContainer: {
+        flexGrow: 1,
     },
 });

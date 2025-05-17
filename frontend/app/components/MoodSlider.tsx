@@ -8,7 +8,7 @@ const SLIDER_WIDTH = SCREEN_WIDTH * 0.8;
 export default function MoodSlider({onChange}: {onChange: (value: number) => void}) {
     const [value, setValue] = useState<number>(50);
 
-    // Funkcja do dynamicznego emoji
+
     const getMoodEmoji = (val: number) => {
         if (val < 20) return '💀';
         if (val < 40) return '😢';
@@ -21,7 +21,7 @@ export default function MoodSlider({onChange}: {onChange: (value: number) => voi
         onChange(value);
     }, [value]);
 
-    // Pozycja emoji przyklejona do thumb + korekta do centrowania
+
     const emojiPosition = (value / 100) * SLIDER_WIDTH - 20;
 
     return (
@@ -29,7 +29,7 @@ export default function MoodSlider({onChange}: {onChange: (value: number) => voi
             <Text style={styles.title}>Overall mood</Text>
 
             <View style={styles.sliderWrapper}>
-                {/* Emoji dynamiczne + przyklejone do thumb */}
+
                 <Text style={[styles.emoji, { left: emojiPosition }]}>
                     {getMoodEmoji(value)}
                 </Text>

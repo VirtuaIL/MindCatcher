@@ -35,7 +35,7 @@ export default function WellbeingTrackerCard() {
 
 const localStyles = StyleSheet.create({
     fullHistoryButton: {
-        // marginTop: 12,
+
         paddingVertical: 8,
         alignSelf: 'center',
     },

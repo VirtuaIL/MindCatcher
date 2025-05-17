@@ -8,7 +8,7 @@ const SLIDER_WIDTH = SCREEN_WIDTH * 0.8;
 export default function MoodSlider2({onChange}: {onChange: (value: number) => void}) {
     const [value, setValue] = useState<number>(50);
 
-    // Funkcja do dynamicznego emoji
+
     const getMoodEmoji = (val: number) => {
         if (val < 20) return '😴';
         if (val < 40) return '🥱';
@@ -22,7 +22,7 @@ export default function MoodSlider2({onChange}: {onChange: (value: number) => vo
     }, [value]);
 
 
-    // Pozycja emoji przyklejona do thumb + korekta do centrowania
+
     const emojiPosition = (value / 100) * SLIDER_WIDTH - 20;
 
     return (
@@ -30,7 +30,7 @@ export default function MoodSlider2({onChange}: {onChange: (value: number) => vo
             <Text style={styles.title}>Sleep Quality</Text>
 
             <View style={styles.sliderWrapper}>
-                {/* Emoji dynamiczne + przyklejone do thumb */}
+
                 <Text style={[styles.emoji, { left: emojiPosition }]}>
                     {getMoodEmoji(value)}
                 </Text>
@@ -41,12 +41,10 @@ export default function MoodSlider2({onChange}: {onChange: (value: number) => vo
                     maximumValue={100}
                     step={1}
                     value={value}
-                    // minimumTrackTintColor="#5F3DC4"
-                    // maximumTrackTintColor="#E5D5FF"
-                    // thumbTintColor="#5F3DC4"
-                    minimumTrackTintColor="#E5D5FF"  // Jasny fiolet
-                    maximumTrackTintColor="#5F3DC4"  // Ciemny fiolet
-                    thumbTintColor="white"           // Biały thumb, ewentualnie transparent
+
+                    minimumTrackTintColor="#E5D5FF"
+                    maximumTrackTintColor="#5F3DC4"
+                    thumbTintColor="white"
                     onValueChange={(val: number) => setValue(val)}
                 />
             </View>
@@ -56,7 +54,7 @@ export default function MoodSlider2({onChange}: {onChange: (value: number) => vo
 
 const styles = StyleSheet.create({
     card: {
-        // backgroundColor: 'white',
+
         backgroundColor: '#5F3DC4',
         borderRadius: 20,
         padding: 20,
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        // color: '#5F3DC4',
+
         color: 'white',
         fontWeight: 'bold',
         marginBottom: 36,

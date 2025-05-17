@@ -47,7 +47,7 @@ export default function CalendarScreen({ navigation }: Props) {
 
                 const json = await response.json();
                 console.log(json)
-                // Assuming `json` is an array of journal entries
+
                 const journalEntries = json.map(
                     (entry: any) =>
                         new JournalData(entry.id, entry.user_id, entry.content, entry.date)
@@ -66,7 +66,7 @@ export default function CalendarScreen({ navigation }: Props) {
             setLoading(false);
             setError(null);
         };
-    }, [selectedDate, userId]); // <-- refetch when date or user changes
+    }, [selectedDate, userId]);
 
     const toggleExpand = (index: number) => {
         setExpanded(expanded === index ? null : index);
@@ -77,19 +77,7 @@ export default function CalendarScreen({ navigation }: Props) {
         <View style={styles.mainComponent}>
             <AppBar navigation={navigation} title="Calendar" />
             <View style={styles.innerWrapper}>
-                {/*<View style={styles.searchWrapper}>*/}
-                {/*    <TextInput*/}
-                {/*        placeholder="Search"*/}
-                {/*        style={styles.searchInput}*/}
-                {/*        value={searchQuery}*/}
-                {/*        onChangeText={setSearchQuery}*/}
-                {/*    />*/}
-                {/*    {searchQuery.length > 0 && (*/}
-                {/*        <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearButton}>*/}
-                {/*            <FontAwesome5 name="times-circle" size={16} color="#333" />*/}
-                {/*        </TouchableOpacity>*/}
-                {/*    )}*/}
-                {/*</View>*/}
+
                 <View style={styles.searchWrapper}>
                     <TextInput
                         placeholder="Search"
@@ -127,7 +115,7 @@ export default function CalendarScreen({ navigation }: Props) {
                     {entries.map((entry, index) => (
                         <TouchableOpacity key={index} style={styles.entry} onPress={() => toggleExpand(index)}>
                             {expanded === index ? (
-                                // Rozwinięte - pokaż wszystko
+
                                 entry.content.map((textPiece, idx) => (
                                     <View style={styles.entryElement} key={idx}>
                                         <Text style={styles.entryText}>{textPiece}</Text>
@@ -136,7 +124,7 @@ export default function CalendarScreen({ navigation }: Props) {
                                     </View>
                                 ))
                             ) : (
-                                // Zwinięte - pokaż tylko pierwsze pytanie + odpowiedź
+                              
                                 <View style={styles.entryElement}>
                                     <Text style={styles.entryText}>{entry.content[0]}</Text>
                                     <Text style={styles.question}>{questions[0]}</Text>
@@ -152,35 +140,7 @@ export default function CalendarScreen({ navigation }: Props) {
                     ))}
 
 
-                    {/*{entries.map((entry, index) => {*/}
-                    {/*    return(*/}
-                    {/*    <TouchableOpacity key={index} style={styles.entry} onPress={() => toggleExpand(index)}>*/}
-                    {/*        <Text style={styles.entryText} numberOfLines={expanded === index ? undefined : 2}>*/}
-                    {/*            {entry.content.map((textPiece, idx) => (*/}
-                    {/*                <View style = {styles.entryElement}>*/}
-                    {/*                <Text*/}
-                    {/*                    key={idx}*/}
-                    {/*                    style={styles.entryText}*/}
-                    {/*                    numberOfLines={expanded === index ? undefined : 2}*/}
-                    {/*                >*/}
-                    {/*                    {textPiece}*/}
-                    {/*                </Text>*/}
-                    {/*                <Text style={styles.question}>*/}
-                    {/*                    {questions[idx]}*/}
-                    {/*                </Text>*/}
-                    {/*                    <View style={styles.horizontalLine}></View>*/}
-                    {/*                </View>*/}
-                    {/*            ))}*/}
-                    {/*        </Text>*/}
-                    {/*        <FontAwesome5*/}
-                    {/*            name={expanded === index ? 'chevron-up' : 'chevron-down'}*/}
-                    {/*            size={16}*/}
-                    {/*            color="white"*/}
-                    {/*            style={{position: 'absolute', right: 16, top: 16}}*/}
-                    {/*        />*/}
-                    {/*    </TouchableOpacity>*/}
-                    {/*    );*/}
-                    {/*})}*/}
+
                 </View>
 
             </View>

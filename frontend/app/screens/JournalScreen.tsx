@@ -46,15 +46,5 @@ export default function JournalScreen({ navigation }: Props) {
         </ScrollView>
 
 
-
-        // Uncomment the following lines to use the JournalEntryCard component
-        // <JournalEntryCard onSave={(text) => console.log(text)} onCancel={() => console.log('Cancelled')} />
-
-        // <View style={styles.mainComponent}>
-        //     <AppBar navigation={navigation} />
-        //     <View style={styles.streakCard}>
-        //         <Text>JOURNAL SCREEN</Text>
-        //     </View>
-        // </View>
     );
 }

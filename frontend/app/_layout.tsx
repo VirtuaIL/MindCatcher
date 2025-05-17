@@ -7,8 +7,7 @@ import * as SystemUI from 'expo-system-ui';
 
 export default function RootLayout() {
   useEffect(() => {
-    // Ustawienie koloru tła paska nawigacji (Android) i ogólnego tła systemowego
-    // na czarny, aby pasował do ciemnego motywu.
+
     SystemUI.setBackgroundColorAsync("black");
   }, []);
 

@@ -44,14 +44,14 @@ export default function HomeScreen({ navigation }: Props) {
 
         fetchData();
 
-        // Cleanup function to handle component unmounting
+
         return () => {
             setLoading(false);
             setError(null);
         };
     }, []);
 
-    // TU VARIABLE Z USERA SĄ NIE USUWAĆ TEGO PLS
+
     useEffect(() => {
         if(!data) return
         if(data.streak === null){

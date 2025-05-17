@@ -35,7 +35,7 @@ export default function FeelingsSelector({onSendData} : {onSendData: (data: {[ke
                         key={feeling}
                         style={[
                             styles.tag,
-                            selectedFeelings[feeling] && styles.tagSelected, // check boolean
+                            selectedFeelings[feeling] && styles.tagSelected,
                         ]}
                         onPress={() => toggleFeeling(feeling)}
                     >

@@ -1,4 +1,4 @@
-// app/components/AiSection.tsx
+
 import React, { useState } from 'react';
 import {
     View,
@@ -19,7 +19,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-// Funkcja do komunikacji z rzeczywistym API backendu
+
 const analyzeThoughtAPI = async (thought: string): Promise<string> => {
     const thoughtMod = new Thought(thought);
 
@@ -37,7 +37,7 @@ const analyzeThoughtAPI = async (thought: string): Promise<string> => {
     }
 
     const data = await response.json();
-// Założenie, że API zwraca obiekt z kluczem 'response' zawierającym odpowiedź modelu
+
     if (!data.response) {
         throw new Error("Invalid API response format: 'response' field missing.");
     }
@@ -65,7 +65,6 @@ export default function AiSection() {
         setIsResponseAreaVisible(true);
 
         try {
-            // Wywołanie funkcji komunikującej się z backendem
             const response = await analyzeThoughtAPI(inputText);
             setApiResponse(response);
         } catch (error) {

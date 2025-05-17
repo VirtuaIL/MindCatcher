@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export const AIPALETTE = {
-    primaryPurple: '#5F3DC4',        // Main dark purple for title, "Learn More" button bg
-    lightPurpleInputBg: '#E1D5FF',  // Background for the input field (matches image)
-    veryLightPurpleButtonBg: '#F0EBFF', // Background for "Analyze" button & response action buttons
-    containerBg: '#FAF7FF',          // Main container background (very light lavender)
-    textInputPlaceholder: '#8071B3', // Placeholder text color (darker than input bg)
-    textInputValue: '#4A2C9D',        // Color for actual typed text & response text
+    primaryPurple: '#5F3DC4',
+    lightPurpleInputBg: '#E1D5FF',
+    veryLightPurpleButtonBg: '#F0EBFF',
+    containerBg: '#FAF7FF',
+    textInputPlaceholder: '#8071B3',
+    textInputValue: '#4A2C9D',
     white: '#FFFFFF',
-    iconColor: '#4A2C9D',            // Color for the 'X' clear icon in input
+    iconColor: '#4A2C9D',
 };
 
 export const aiSectionStyles = StyleSheet.create({
@@ -52,9 +52,9 @@ export const aiSectionStyles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: AIPALETTE.lightPurpleInputBg,
-        borderRadius: 25, // Highly rounded as per image
+        borderRadius: 25,
         paddingHorizontal: 20,
-        paddingVertical: 8, // Gives some height
+        paddingVertical: 8,
         marginBottom: 20,
         minHeight: 50,
     },
@@ -62,17 +62,17 @@ export const aiSectionStyles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         color: AIPALETTE.textInputValue,
-        paddingVertical: 8, // Adjust for vertical centering if needed
+        paddingVertical: 8,
     },
     clearButton: {
-        padding: 5, // Clickable area for the icon
+        padding: 5,
         marginLeft: 8,
     },
     analyzeButton: {
         backgroundColor: AIPALETTE.veryLightPurpleButtonBg,
         paddingVertical: 14,
         paddingHorizontal: 30,
-        borderRadius: 25, // Highly rounded
+        borderRadius: 25,
         alignSelf: 'center',
     },
     analyzeButtonText: {
@@ -81,16 +81,16 @@ export const aiSectionStyles = StyleSheet.create({
         fontWeight: 'bold',
         textTransform: 'uppercase',
     },
-    responseAreaWrapper: { // Wraps the response box and action buttons
-        marginTop: 25, // Space below "Analyze" button
+    responseAreaWrapper: {
+        marginTop: 25,
     },
     responseBox: {
         padding: 15,
-        backgroundColor: AIPALETTE.white, // White background for response
+        backgroundColor: AIPALETTE.white,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: AIPALETTE.lightPurpleInputBg, // Light border, can be darker
-        minHeight: 100, // Give some space for the text
+        borderColor: AIPALETTE.lightPurpleInputBg,
+        minHeight: 100,
     },
     responseText: {
         fontSize: 15,
@@ -99,9 +99,9 @@ export const aiSectionStyles = StyleSheet.create({
     },
     responseActionsContainer: {
         flexDirection: 'row',
-        justifyContent: 'flex-end', // Align buttons to the right
+        justifyContent: 'flex-end',
         marginTop: 15,
-        gap: 10, // Creates space between buttons if using flex-end
+        gap: 10,
     },
     responseActionButton: {
         backgroundColor: AIPALETTE.veryLightPurpleButtonBg,
@@ -112,10 +112,10 @@ export const aiSectionStyles = StyleSheet.create({
     responseActionButtonText: {
         color: AIPALETTE.primaryPurple,
         fontSize: 13,
-        fontWeight: '600', // Semi-bold
+        fontWeight: '600',
     },
     loadingIndicatorContainer: {
-        minHeight: 100, // Match responseBox minHeight
+        minHeight: 100,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: AIPALETTE.white,

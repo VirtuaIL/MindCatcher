@@ -1,58 +1,57 @@
 import { StyleSheet } from "react-native";
 
-// Możesz zdefiniować kolory tutaj lub zaimportować je z centralnego pliku,
-// jeśli masz taki (np. z loginFormScreenStyle.ts lub styles.ts)
-const darkPurple = '#5F3DC4'; // Kolor tła głównego kontenera i tytułu w białym boxie
+
+const darkPurple = '#5F3DC4';
 
 export const newsStyles = StyleSheet.create({
     newsCardImageContainer: {
         backgroundColor: darkPurple,
-        borderRadius: 25, // Zgodnie z obrazkiem, dość zaokrąglone
+        borderRadius: 25,
         paddingVertical: 20,
         paddingHorizontal: 15,
-        marginHorizontal: 16, // Standardowy margines dla kart
-        marginTop: 32,        // Odstęp od góry
-        width: '90%',         // Szerokość karty
-        alignSelf: 'center',  // Wycentrowanie karty, jeśli jest w kontenerze flex
+        marginHorizontal: 16,
+        marginTop: 32,
+        width: '90%',
+        alignSelf: 'center',
     },
     newsCardImageHeader: {
-        color: 'white',       // Kolor tekstu "WORLD IS MUCH BETTER..."
+        color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 15,     // Odstęp pod nagłówkiem
-        paddingLeft: 10,      // Lekki padding od lewej dla nagłówka
-        textTransform: 'uppercase', // Wielkie litery
+        marginBottom: 15,
+        paddingLeft: 10,
+        textTransform: 'uppercase',
     },
     newsCardImageContentBox: {
-        backgroundColor: 'white', // Białe tło dla "TITLE(PLACEHOLDER)"
-        borderRadius: 20,     // Zaokrąglenie białego pola
-        paddingVertical: 25,  // Wewnętrzny padding pionowy
-        paddingHorizontal: 20,// Wewnętrzny padding poziomy
-        justifyContent: 'center', // Wycentrowanie tekstu w pionie
-        alignItems: 'center',   // Wycentrowanie tekstu w poziomie
-        minHeight: 100,        // Minimalna wysokość, aby wyglądało dobrze nawet z krótkim tytułem
-        marginBottom: 15,     // Odstęp pod białym polem, przed "READ MORE"
+        backgroundColor: 'white',
+        borderRadius: 20,
+        paddingVertical: 25,
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: 100,
+        marginBottom: 15,
     },
     newsCardImageTitle: {
-        color: darkPurple,    // Kolor tekstu tytułu, taki sam jak tło głównego kontenera
+        color: darkPurple,
         fontSize: 18,
-        fontWeight: '500',    // Trochę mniej niż bold
-        textAlign: 'center',  // Tekst tytułu wyśrodkowany
+        fontWeight: '500',
+        textAlign: 'center',
     },
     newsCardImageReadMoreContainer: {
-        flexDirection: 'row', // Ułożenie tekstu i ikonki w rzędzie
-        alignItems: 'center',   // Wyrównanie elementów w pionie
-        alignSelf: 'flex-end',// Przesunięcie "READ MORE" do prawej strony karty
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'flex-end',
     },
     newsCardImageReadMoreText: {
-        color: 'white',       // Kolor tekstu "READ MORE"
+        color: 'white',
         fontSize: 14,
         fontWeight: 'bold',
-        textDecorationLine: 'underline', // Podkreślenie
-        marginRight: 5,       // Mały odstęp między tekstem a ikonką
-        textTransform: 'uppercase', // Wielkie litery
+        textDecorationLine: 'underline',
+        marginRight: 5,
+        textTransform: 'uppercase',
     },
     newsCardImageReadMoreIcon: {
-        color: 'white',       // Kolor ikonki strzałki
+        color: 'white',
     },
 });

@@ -54,7 +54,7 @@ export default function FormScreen({ navigation }: Props) {
 
         feelings = feelingsArray;
 
-        console.log(feelings); // Optional: debug
+        console.log(feelings);
     };
 
 
@@ -70,15 +70,12 @@ export default function FormScreen({ navigation }: Props) {
         <View style={styles.mainComponent}>
             <AppBar navigation={navigation} />
             <ScrollView contentContainerStyle={{ padding: 16 }}>
-                {/*<MoodSlider label="Overall mood" icon="😃" />*/}
-                {/*<MoodSlider label={"Mood"}/>*/}
+
                 <MoodSlider onChange={onMoodChange}/>
                 <MoodSlider2 onChange={onSleepChange}/>
                 <FeelingsSelector onSendData={handleFeelingsChange} />
 
-                {/*<TouchableOpacity style={localstyles.saveButton} onPress={() => onSave()}>*/}
-                {/*    <Text style={localstyles.saveButtonText}>Save</Text>*/}
-                {/*</TouchableOpacity>*/}
+
                 <TouchableOpacity style={localstyles.saveButton} onPress={() => handleSaveForm()}>
                     <Text style={localstyles.saveButtonText}>ADD</Text>
                 </TouchableOpacity>
@@ -105,7 +102,7 @@ const localstyles = StyleSheet.create({
         paddingVertical: 16,
         paddingHorizontal: 20,
         borderRadius: 20,
-        // marginRight: 8,
+
         width: '30%',
         alignSelf: 'center',
         marginTop: 16,

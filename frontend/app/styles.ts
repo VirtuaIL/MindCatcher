@@ -253,4 +253,11 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
     },
+    keyboardAvoidingContainer: {
+        flex: 1,
+        backgroundColor: '#EADDFF',
+    },
+    scrollContentContainer: {
+        flexGrow: 1,
+    },
 });

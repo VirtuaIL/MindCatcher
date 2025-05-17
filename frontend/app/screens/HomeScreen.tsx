@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { styles } from '../styles';
 import AppBar from '../components/AppBar';
 import StreakCard from '../components/StreakCard';
@@ -8,6 +8,8 @@ import { DrawerParamList } from '../types';
 import News from "../components/News";
 import WellbeingTrackerCard from "@/app/components/WellbeingTrackerCard";
 import UserData from "../model/user"
+import AiSection from "../components/AiSection";
+import EmotionalVocabularyCard from "@/app/components/VocabCard";
 
 type Props = DrawerScreenProps<DrawerParamList, 'Home'>;
 
@@ -81,14 +83,22 @@ export default function HomeScreen({ navigation }: Props) {
     }
 
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <View style={styles.mainComponent}>
-                <AppBar navigation={navigation} />
-                <StreakCard streak={data.streak} streakRecord={data.streak_record} />
-                <WellbeingTrackerCard />
-                <News />
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"} // Najczęstsze ustawienie
+            style={styles.keyboardAvoidingContainer}
 
-            </View>
-        </ScrollView>
+        >
+            <ScrollView contentContainerStyle={styles.scrollContentContainer}  keyboardShouldPersistTaps="handled">
+                <View style={styles.mainComponent}>
+                    <AppBar navigation={navigation} />
+                    <StreakCard streak={data.streak} streakRecord={data.streak_record} />
+                    <WellbeingTrackerCard />
+                    <News />
+                    <AiSection />
+                    <EmotionalVocabularyCard/>
+                </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
+
     );
 }

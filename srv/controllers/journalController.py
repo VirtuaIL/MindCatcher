@@ -16,6 +16,8 @@ def read_user(journal_id: int, session: SessionDep):
 
 @app.post("/journals/", response_model=Journal, status_code=status.HTTP_201_CREATED)
 def create_user(journal: Journal, session: SessionDep) -> Journal:
+    if not journal.user_id:
+        raise HTTPException(status_code=400, detail="USER ID NEEDED")
     session.add(journal)
     session.commit()
     session.refresh(journal)
